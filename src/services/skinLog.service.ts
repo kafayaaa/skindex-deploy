@@ -41,7 +41,7 @@ export async function createSkinLog(
 
   const session = await supabase.auth.getSession();
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/skin-log`, {
+  const res = await fetch(`/api/skin-log`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

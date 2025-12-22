@@ -14,16 +14,13 @@ export async function getSkinInsight(
 
   const params = date ? `?date=${date}` : "";
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/skin-insight${params}`,
-    {
-      headers: {
-        Authorization: `Bearer ${session.access_token}`,
-        "Content-Type": "application/json",
-      },
-      cache: "no-store",
-    }
-  );
+  const res = await fetch(`/api/skin-insight${params}`, {
+    headers: {
+      Authorization: `Bearer ${session.access_token}`,
+      "Content-Type": "application/json",
+    },
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     const text = await res.text();

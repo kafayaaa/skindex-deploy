@@ -144,13 +144,16 @@ export const SkinProvider = ({ children }: { children: React.ReactNode }) => {
 
   const fetchSkinInsight = useCallback(async (date: string): Promise<void> => {
     try {
-      setLoading(true);
+      setInsightLoading(true);
       const data = await getSkinInsight(date);
       setSkinInsight(data);
-    } catch (err) {
-      setError("Gagal mengambil skin insight");
+      setError(null);
+    } catch (err: unknown) {
+      console.error("fetchSkinInsight error:", err);
+      if (err instanceof Error)
+        setError(err.message ?? "Gagal mengambil skin insight");
     } finally {
-      setLoading(false);
+      setInsightLoading(false);
     }
   }, []);
 

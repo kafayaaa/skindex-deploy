@@ -37,16 +37,13 @@ export async function analyzeSkin(file: File, logId?: string) {
   formData.append("photo", file);
   if (logId) formData.append("log_id", logId);
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/skin/analyze`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${session.access_token}`,
-      },
-      body: formData,
-    }
-  );
+  const res = await fetch(`/api/skin/analyze`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${session.access_token}`,
+    },
+    body: formData,
+  });
 
   if (!res.ok) {
     const errorBody = await res.json().catch(() => null);
@@ -66,14 +63,11 @@ export async function getLogByDate(date: string) {
     throw new Error("User not authenticated");
   }
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/skin/logs/by-date?date=${date}`,
-    {
-      headers: {
-        Authorization: `Bearer ${session.access_token}`,
-      },
-    }
-  );
+  const res = await fetch(`/api/skin/logs/by-date?date=${date}`, {
+    headers: {
+      Authorization: `Bearer ${session.access_token}`,
+    },
+  });
 
   if (!res.ok) {
     if (res.status === 404) return null;
