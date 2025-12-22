@@ -184,6 +184,17 @@ export interface Recommendation {
   priority: 1 | 2 | 3;
 }
 
+export interface AnalysisDetailDB {
+  id: number;
+  user_id: string;
+  photo_id: number;
+  severity: "low" | "moderate" | "high";
+  intro_text: string;
+  concerns: string[];
+  recommendations: Recommendation[];
+  generated_at: string;
+}
+
 export interface AnalysisDetail {
   id: number;
   opening: string;

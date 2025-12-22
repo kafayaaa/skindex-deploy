@@ -1,6 +1,9 @@
 import { supabase } from "@/lib/supabase";
+import { AnalysisDetailDB } from "@/types/Skin";
 
-export async function getAnalysisDetail(photoId: number) {
+export async function getAnalysisDetail(
+  photoId: number
+): Promise<AnalysisDetailDB> {
   const {
     data: { user },
   } = await supabase.auth.getUser();

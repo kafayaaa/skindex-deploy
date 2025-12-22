@@ -1,6 +1,5 @@
 // services/interpretation.service.ts
 import { supabase } from "@/lib/supabase";
-import { AnalysisInterpretation } from "@/types/Skin";
 
 export async function getInterpretations() {
   const { data, error } = await supabase

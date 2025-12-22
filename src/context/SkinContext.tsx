@@ -122,9 +122,19 @@ export const SkinProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const detail = await getAnalysisDetail(photoId);
 
+      const mapped: AnalysisDetail = {
+        id: detail.id,
+        opening: detail.intro_text,
+        summary: detail.intro_text,
+        skin_condition: detail.severity,
+        concerns: detail.concerns,
+        severity: detail.severity,
+        analysis_recommendations: detail.recommendations,
+      };
+
       setAnalysisDetails((prev) => ({
         ...prev,
-        [photoId]: detail,
+        [photoId]: mapped,
       }));
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
