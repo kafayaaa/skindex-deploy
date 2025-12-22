@@ -11,17 +11,15 @@ export class SkinCheckController {
       });
     }
 
-    let filePath;
-    let mimeType;
     try {
-      filePath = req.file.path;
-      mimeType = req.file.mimetype;
+      const buffer = req.file.buffer;
+      const mimeType = req.file.mimetype;
 
       if (!mimeType.startsWith("image/")) {
         return res.status(400).send("File harus berupa gambar.");
       }
 
-      const result = await SkinCheckService.analyzeSkin(filePath, mimeType);
+      const result = await SkinCheckService.analyzeSkin(buffer, mimeType);
 
       res.status(200).json({
         message: "Skin type analyzed successfully",
@@ -32,14 +30,6 @@ export class SkinCheckController {
       res.status(500).json({
         error: "Failed to analyze skin type",
       });
-    } finally {
-      // Pengecekan ini harus ada!
-      if (filePath) {
-        // --- PERBAIKAN: Gunakan 'filePath!' untuk memberi tahu TypeScript bahwa ini pasti string ---
-        fs.unlink(filePath!, (err) => {
-          if (err) console.error("Gagal menghapus file temporer:", err);
-        });
-      }
     }
   }
 }

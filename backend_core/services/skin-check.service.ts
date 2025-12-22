@@ -3,10 +3,10 @@ import { ai } from "../utils/gemini.js"; // Diasumsikan 'model' sudah menggunaka
 import fs from "fs";
 
 // Fungsi pembantu untuk mengubah file lokal menjadi format yang dipahami Gemini (Part)
-function fileToGenerativePart(filePath: string, mimeType: string) {
+function fileToGenerativePart(buffer: Buffer, mimeType: string) {
   return {
     inlineData: {
-      data: Buffer.from(fs.readFileSync(filePath)).toString("base64"),
+      data: buffer.toString("base64"),
       mimeType,
     },
   };
@@ -18,11 +18,11 @@ export class SkinCheckService {
    * @param filePath Lokasi file gambar di sistem lokal.
    * @param mimeType MIME type file, cth: 'image/jpeg', 'image/png'.
    */
-  static async analyzeSkin(filePath: string, mimeType: string) {
+  static async analyzeSkin(buffer: Buffer, mimeType: string) {
     // Pastikan fileType adalah tipe gambar yang valid, misalnya dengan memeriksa ekstensi jika mimeType tidak tersedia.
 
     // 1. Buat bagian gambar (Generative Part)
-    const imagePart = fileToGenerativePart(filePath, mimeType);
+    const imagePart = fileToGenerativePart(buffer, mimeType);
 
     // 2. Tentukan prompt sebagai System Instruction
     // Menggunakan System Instruction (seperti yang Anda lakukan) adalah praktik terbaik.
@@ -90,13 +90,3 @@ export class SkinCheckService {
     }
   }
 }
-
-// Catatan: Pastikan di file '../utils/gemini.ts' Anda menggunakan fungsi 'get' (bukan 'getGenerativeModel'):
-/*
-// ../utils/gemini.ts
-import { GoogleGenAI } from "@google/genai";
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" }); 
-export const model = ai.models.get({
-    model: "gemini-2.5-flash",
-});
-*/

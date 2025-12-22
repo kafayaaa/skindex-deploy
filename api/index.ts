@@ -3,7 +3,7 @@ dotenv.config();
 
 import express from "express";
 import cors from "cors";
-import multer from "multer";
+import upload from "../backend_core/utils/multer.js";
 import healthRoute from "../backend_core/routes/health.route.js";
 import skinCheckRoute from "../backend_core/routes/skin-check.route.js";
 import skinRouter from "../backend_core/routes/skin.route.js";
@@ -18,9 +18,6 @@ app.use(
   })
 );
 app.use(express.json());
-
-// File upload (multer)
-const upload = multer({ dest: "uploads/" });
 
 // Routes
 app.use("/health", healthRoute);
@@ -38,11 +35,5 @@ app.post("/upload", upload.single("image"), (req, res) => {
     file: req.file,
   });
 });
-
-// const PORT = process.env.PORT || 4000;
-
-// app.listen(PORT, () => {
-//   console.log(`Backend running on http://localhost:${PORT}`);
-// });
 
 export default app;
