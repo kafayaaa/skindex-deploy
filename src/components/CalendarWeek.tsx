@@ -174,12 +174,6 @@ export default function CalendarWeekly({
           </p>
         </div>
       )}
-      {/* <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-700 text-center">
-        <p className="text-xs md:text-sm text-zinc-500 dark:text-zinc-400">
-          Gunakan tombol panah untuk navigasi minggu • Klik &quot;Minggu
-          Ini&quot; untuk kembali ke minggu saat ini
-        </p>
-      </div> */}
     </>
   );
 }

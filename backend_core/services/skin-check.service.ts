@@ -1,6 +1,5 @@
 // src/services/skin.service.ts
 import { ai } from "../utils/gemini.js"; // Diasumsikan 'model' sudah menggunakan SDK terbaru (@google/genai)
-import fs from "fs";
 
 // Fungsi pembantu untuk mengubah file lokal menjadi format yang dipahami Gemini (Part)
 function fileToGenerativePart(buffer: Buffer, mimeType: string) {

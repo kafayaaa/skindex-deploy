@@ -123,13 +123,8 @@ export default function LogDetail({
 
             {/* ===== STATUS BOX ===== */}
             <div className="col-span-5 flex justify-end gap-4">
-              {/* LOG */}
-              {/* <div className="w-1/3">
-                <StatusBox title="Log Harian" done={filteredLogs.length > 0} />
-              </div> */}
-
               {/* ACTION */}
-              {filteredLogs.length === 0 && (
+              {selectedDayData?.isToday && filteredLogs.length === 0 && (
                 <div className="my-auto">
                   <Link
                     href="/dashboard/daily-log"

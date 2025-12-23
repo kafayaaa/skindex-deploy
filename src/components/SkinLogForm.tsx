@@ -100,23 +100,22 @@ export default function SkinLogForm() {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Date Field */}
-        <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
-            <Calendar className="w-4 h-4" />
-            Tanggal
-          </label>
-          <input
-            type="date"
-            name="date"
-            value={form.date}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
-          />
-        </div>
+      <div className="mb-6 p-3 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-700">
+        <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400 flex items-center gap-2">
+          <Calendar className="w-4 h-4" />
+          Log untuk hari ini:{" "}
+          <span className="text-zinc-900 dark:text-zinc-100">
+            {new Date().toLocaleDateString("id-ID", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </span>
+        </p>
+      </div>
 
+      <form onSubmit={handleSubmit} className="space-y-6">
         {/* Skin Notes */}
         <div>
           <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
@@ -223,21 +222,6 @@ export default function SkinLogForm() {
             className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all resize-none"
           />
         </div>
-
-        {/* Mood */}
-        {/* <div>
-          <label className="flex items-center gap-2 text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2">
-            <Smile className="w-4 h-4" />
-            Mood (Opsional)
-          </label>
-          <input
-            name="mood"
-            placeholder="Misal: Senang, Lelah, Santai..."
-            value={form.mood}
-            onChange={handleChange}
-            className="w-full px-4 py-3 bg-zinc-50 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all"
-          />
-        </div> */}
 
         {/* Error Display */}
         {error && (
