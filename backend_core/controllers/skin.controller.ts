@@ -106,6 +106,11 @@ export const analyzeSkin = async (req: Request, res: Response) => {
       },
     });
 
+    console.log("DATA TO SAVE:", {
+      concerns,
+      recommendations: interpretation.recommendations,
+    });
+
     // 4.3 Save interpretation
     const { error: interpretationError } = await supabase
       .from("analysis_interpretations")
