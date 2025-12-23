@@ -167,18 +167,18 @@ export default function CalendarWeekly({
       {children}
       {/* Week Navigation Tips */}
       {filteredLogs.length > 0 && (
-        <div className="w-full mt-3 border-t border-zinc-200 dark:border-zinc-700 text-xs md:text-sm text-zinc-500 dark:text-zinc-400">
-          <div className="pt-6 text-center flex items-center justify-center">
+        <div className="w-full mt-3 text-xs md:text-sm text-zinc-500 dark:text-zinc-400">
+          <div className="pt-6 text-center flex flex-col md:flex-row items-center justify-center gap-2">
             <p>Sudah pakai skincare tapi bingung manfaat dari komposisinya?</p>
             <Link
               href="https://komposisiku.vercel.app/"
               target="_blank"
-              className="bg-cyan-400 dark:bg-cyan-600 hover:bg-cyan-600 dark:hover:bg-cyan-400 rounded-lg text-white px-5 py-2.5"
+              className="bg-cyan-400 dark:bg-cyan-600 hover:bg-cyan-600 dark:hover:bg-cyan-400 rounded-lg text-white px-4 py-2"
             >
               Yuk temuin di sini!
             </Link>
           </div>
-          <div className="pt-6 text-center">
+          <div className="pt-6 text-center border-t border-zinc-200 dark:border-zinc-700">
             <p>
               Hasil ini dianalisis oleh AI. Untuk diagnosa yang lebih mendalam
               dan akurat, sangat disarankan untuk berkonsultasi dengan dokter
